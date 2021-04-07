@@ -17,7 +17,7 @@ namespace Testing
             InitializeComponent();
         }
 
-        
+        // Filter For Numbers
         private void guna2TextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -26,6 +26,7 @@ namespace Testing
             }
         }
 
+        //panel text percentage
         private void guna2GradientButton2_Click(object sender, EventArgs e)
         {
             Track5.Value = 90;
@@ -38,6 +39,7 @@ namespace Testing
             Per5.Text = Track5.Value.ToString() + "%";
         }
 
+        // Track Scroll
         private void Track5_Scroll(object sender, ScrollEventArgs e)
         {
             Per5.Text = Track5.Value.ToString() + "%";

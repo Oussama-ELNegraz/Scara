@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
 
@@ -16,6 +9,7 @@ namespace Testing
         public Forward_Kinematics()
         {
             InitializeComponent();
+            // Initilize text panel for the percentage
             Per1.Text = Track1.Value.ToString() + "°";
             Per2.Text = Track2.Value.ToString() + "°";
             Per3.Text = Track3.Value.ToString() + "°";
@@ -23,6 +17,8 @@ namespace Testing
             Per5.Text = Track5.Value.ToString() + "%";
 
         }
+
+        // Create event for the add button
         private void buttonAdd(Guna2NumericUpDown Num, Guna2TrackBar track , Label percentage)
         {
             if (track.Value + Num.Value <= 360)
@@ -32,6 +28,7 @@ namespace Testing
             }
         }
 
+        // Create event for the minus button
         private void buttonMinus(Guna2NumericUpDown Num, Guna2TrackBar track, Label percentage)
         {
             if (track.Value - Num.Value >= 1)
@@ -40,72 +37,67 @@ namespace Testing
                 percentage.Text = track.Value.ToString() + "°";
             }
         }
-
+        // Create event for scroll track bar
         private void TrackBarScroll(Guna2TrackBar track, Label percentage)
         {
             percentage.Text = track.Value.ToString() + "°";
         }
 
+        // Scroll Event
+
         private void Track1_Scroll(object sender, ScrollEventArgs e)
         {
             TrackBarScroll(Track1, Per1);
-        }
-       
-
+        }       
         private void Track2_Scroll(object sender, ScrollEventArgs e)
         {
             TrackBarScroll(Track2, Per2);
         }
-
         private void Track3_Scroll(object sender, ScrollEventArgs e)
         {
             TrackBarScroll(Track3, Per3);
         }
-
         private void Track4_Scroll(object sender, ScrollEventArgs e)
         {
             TrackBarScroll(Track4, Per4);
         }
+
+
+        // Use add and minus function with the number up down
         private void guna2GradientCircleButton1_Click(object sender, EventArgs e)
         {
             buttonAdd(NumUpDown1, Track1, Per1);
-        }
-        
+        }        
         private void guna2GradientCircleButton3_Click(object sender, EventArgs e)
         {
             buttonAdd(NumUpDown2, Track2, Per2);
          }
-
         private void guna2GradientCircleButton5_Click(object sender, EventArgs e)
         {
             buttonAdd(NumUpDown3, Track3, Per3);
          }
-
         private void guna2GradientCircleButton7_Click(object sender, EventArgs e)
         {
             buttonAdd(NumUpDown4, Track4, Per4);
         }
-
         private void guna2GradientCircleButton2_Click(object sender, EventArgs e)
         {
             buttonMinus(NumUpDown1, Track1, Per1);
         }
-
         private void guna2GradientCircleButton4_Click(object sender, EventArgs e)
         {
             buttonMinus(NumUpDown2, Track2, Per2);
         }
-
         private void guna2GradientCircleButton6_Click(object sender, EventArgs e)
         {
             buttonMinus(NumUpDown3, Track3, Per3);
         }
-
         private void guna2GradientCircleButton8_Click(object sender, EventArgs e)
         {
             buttonMinus(NumUpDown4, Track4, Per4);
         }
 
+        // Griper Cases
         private void guna2GradientButton2_Click(object sender, EventArgs e)
         {
             Track5.Value = 90;
